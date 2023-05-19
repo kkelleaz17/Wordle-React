@@ -1,38 +1,241 @@
-.App {
-  text-align: center;
+:root{
+  --BGCOLOR:#121213;
+  --BorderColor:#3a3a3c;
+  --font-color:white;
+  --Yellow:#b59f3b;
+  --Grey:#3a3a3c;
+  --Green:#538d4e;
+  --keyboard:#818384;
+}
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&display=swap');
+
+*{
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Correct{
+background-color: var(--Green) !important;
+border:solid 2.5px var(--Green) !important;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Normal{
+  background-color: var(--Grey) !important;
+  border:solid 2.5px var(--Grey) !important;
+}
+.Wrong{
+  background-color: var(--Yellow) !important;
+  border:solid 2.5px var(--Yellow) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+#root{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+
+
+
+.App{
+  display: grid;
+  grid-template-columns: repeat(5,62px);
+  grid-template-rows: repeat(6,62px);
+  gap: 2.5px;
+}
+
+.Loading{
+  font-family: 'Libre Franklin', sans-serif;
+}
+.Loading::after{
+  content: '...';
+  animation: ContentChange infinite 2s;
+}
+
+@keyframes ContentChange {
+ 0%{content: '';}
+ 25%{content: '.';}
+ 50%{content: '..';}
+ 100%{content: '...';}
+}
+
+
+
+
+
+
+body{
+  margin: 0px;
+  background-color: var(--BGCOLOR);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  
+}
+
+.Square{
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: bold;
+  vertical-align: middle;
+  box-sizing: border-box;
+  color: var(font-color);
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border:solid 2.5px var(--BorderColor);
+  z-index: 1;
+}
+
+
+.Animate{
+  animation: TurnOver 1s backwards ease-in;
+  
+}
+
+@keyframes TurnOver {
+  0%{transform: rotateY(0deg); animation-timing-function:ease-in}
+  50%{transform: rotateY(90deg)}
+  50.01%{transform: rotateY(-90deg); animation-timing-function:ease-out}
+  100%{transform: rotateY(0deg)}
+}
+
+
+.KeyBoard{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px;
+  width: 500px;
 }
 
-.App-link {
-  color: #61dafb;
+.KeyBoardRow {
+  display: flex;
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+.Key{
+  background-color: var(--keyboard);
+  width: 43px;
+  height: 58px;
+    font-size: 1.25em;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+.SideKey{
+  width: 70px !important;
+  font-size: 1rem;
+}
+
+
+.WinScreen{
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, .4);
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 2;
+flex-direction: column;
+}
+
+
+
+
+.WinScreen div{
+  padding: 50px;
+  background-color: rgb(92, 92, 92);
+  border-radius: 15px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  z-index: 5;
+  
+}
+
+.WinScreen div h1,.WinScreen div h2{
+  margin: 0px;
+}
+
+
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
 }
