@@ -16,7 +16,7 @@ function App() {
   const [Winner,SetWinner]= useState(null);
 
   useEffect(()=>{  
-     if(WordList.length > 1 && WordOfTheDay.toLocaleLowerCase() == WordList.substring(WordList.length-6,WordList.length).toLocaleLowerCase().trim()){
+     if(WordList.length > 1 && WordOfTheDay.toLocaleLowerCase() === WordList.substring(WordList.length-6,WordList.length).toLocaleLowerCase().trim()){
       SetWinner(1);
       return;
      }else if(WordList.length === 36){
